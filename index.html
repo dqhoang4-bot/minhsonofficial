@@ -171,13 +171,13 @@
       <p class="section-desc">Minh Sơn sở hữu năng lực tư vấn, tích hợp và tối ưu hóa hạ tầng CNTT toàn diện, tập trung vào 3 lĩnh vực cốt lõi:</p>
 
       <div class="tabs">
-        <button class="tab-btn active" data-tab="tab1">
+        <button type="button" class="tab-btn active" data-tab="tab1" aria-selected="true">
           <i class="fa-solid fa-server"></i> Hạ tầng máy chủ & Lưu trữ
         </button>
-        <button class="tab-btn" data-tab="tab2">
+        <button type="button" class="tab-btn" data-tab="tab2" aria-selected="false">
           <i class="fa-solid fa-shield-halved"></i> Bảo vệ dữ liệu
         </button>
-        <button class="tab-btn" data-tab="tab3">
+        <button type="button" class="tab-btn" data-tab="tab3" aria-selected="false">
           <i class="fa-solid fa-network-wired"></i> Mạng & Bảo mật
         </button>
       </div>
@@ -495,6 +495,31 @@
   <!-- Back to top -->
   <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
 
-  <script src="js/main.js"></script>
+  <script>
+    /* ===== TAB SWITCHING – inline, chạy trước mọi thứ ===== */
+    function switchTab(btn, tabId) {
+      document.querySelectorAll('.tab-btn').forEach(function(b) {
+        b.classList.remove('active');
+      });
+      document.querySelectorAll('.tab-content').forEach(function(c) {
+        c.classList.remove('active');
+      });
+      btn.classList.add('active');
+      var panel = document.getElementById(tabId);
+      if (panel) panel.classList.add('active');
+    }
+
+    /* Chạy ngay sau DOM ready để gán event, tránh bị main.js override */
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.tab-btn').forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          e.stopPropagation(); /* chặn smooth-scroll listener */
+          var tabId = btn.getAttribute('data-tab');
+          if (tabId) switchTab(btn, tabId);
+        });
+      });
+    });
+  </script>
+  <script src="js/main.js?v=3"></script>
 </body>
 </html>

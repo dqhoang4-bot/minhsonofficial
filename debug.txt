@@ -1,0 +1,4 @@
+﻿173 '        <button type="button" class="tab-btn active" data-tab="tab1" aria-selected="true">\n'
+176 '        <button type="button" class="tab-btn" data-tab="tab2" aria-selected="false">\n'
+179 '        <button type="button" class="tab-btn" data-tab="tab3" aria-selected="false">\n'
+499 "      var buttons = document.querySelectorAll('.tab-btn');\n"

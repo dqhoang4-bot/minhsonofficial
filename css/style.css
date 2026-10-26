@@ -448,13 +448,23 @@ ul { list-style: none; }
   color: var(--primary);
 }
 .tab-btn.active {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: var(--white);
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--white) !important;
   box-shadow: 0 4px 16px rgba(10,79,166,.25);
 }
-.tab-content { display: none; }
-.tab-content.active { display: block; }
+/* Tab content: ẩn/hiện bằng display */
+.tab-content {
+  display: none;
+  animation: tabFadeIn .3s ease;
+}
+.tab-content.active {
+  display: block;
+}
+@keyframes tabFadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 .solution-grid {
   display: grid;
