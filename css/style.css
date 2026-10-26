@@ -116,8 +116,8 @@ ul { list-style: none; }
   z-index: 1000;
   transition: background var(--transition), box-shadow var(--transition);
   padding: 16px 0;
-  background: rgba(7, 30, 60, 0.72);
-  backdrop-filter: blur(4px);
+  background: rgba(13, 27, 46, 1);
+  box-shadow: 0 2px 20px rgba(0,0,0,.3);
 }
 #header.scrolled {
   background: rgba(13,27,46,.96);
