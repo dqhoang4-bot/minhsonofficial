@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+<script>
+  /* Tab switching - defined early so onclick attrs always work */
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(function(b) {
+      b.classList.remove('active');
+    });
+    document.querySelectorAll('.tab-content').forEach(function(p) {
+      p.style.display = 'none';
+      p.classList.remove('active');
+    });
+    btn.classList.add('active');
+    var panel = document.getElementById(tabId);
+    if (panel) {
+      panel.style.display = 'block';
+      panel.classList.add('active');
+    }
+  }
+</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MSTech – Công ty TNHH Công nghệ Minh Sơn</title>
@@ -494,32 +512,6 @@
 
   <!-- Back to top -->
   <button id="back-to-top" aria-label="Back to top"><i class="fa-solid fa-chevron-up"></i></button>
-
-  <script>
-    /* ===== TAB SWITCHING – inline, chạy trước mọi thứ ===== */
-    function switchTab(btn, tabId) {
-      document.querySelectorAll('.tab-btn').forEach(function(b) {
-        b.classList.remove('active');
-      });
-      document.querySelectorAll('.tab-content').forEach(function(c) {
-        c.classList.remove('active');
-      });
-      btn.classList.add('active');
-      var panel = document.getElementById(tabId);
-      if (panel) panel.classList.add('active');
-    }
-
-    /* Chạy ngay sau DOM ready để gán event, tránh bị main.js override */
-    document.addEventListener('DOMContentLoaded', function() {
-      document.querySelectorAll('.tab-btn').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation(); /* chặn smooth-scroll listener */
-          var tabId = btn.getAttribute('data-tab');
-          if (tabId) switchTab(btn, tabId);
-        });
-      });
-    });
-  </script>
   <script src="js/main.js?v=3"></script>
 </body>
 </html>
