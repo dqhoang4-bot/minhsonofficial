@@ -865,3 +865,11 @@ footer {
   .btn { width: 100%; justify-content: center; }
   .partner-logos { justify-content: center; }
 }
+
+/* Contact single column (no form) */
+.contact-single {
+  max-width: 680px;
+}
+.contact-single .contact-info h2 { font-size: clamp(1.8rem, 3vw, 2.4rem); }
+.contact-single .contact-list { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+@media (max-width: 600px) { .contact-single .contact-list { grid-template-columns: 1fr; } }
