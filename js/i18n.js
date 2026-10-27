@@ -123,6 +123,7 @@
       'footer.linkPartners': 'Đối tác chiến lược',
       'footer.linkContact': 'Liên hệ',
       'footer.address': 'Ngõ 101 Thanh Nhàn, Bạch Mai, Hà Nội',
+      'footer.office': 'Văn phòng giao dịch: Tầng 4, Tòa nhà Times Tower, Số 35 Lê Văn Lương, phường Thanh Xuân, thành phố Hà Nội, Việt Nam',
       'footer.copyright': '© 2026 Công ty TNHH Công nghệ Minh Sơn (MSTech). All rights reserved.'
     },
 
@@ -243,6 +244,7 @@
       'footer.linkPartners': 'Strategic Partners',
       'footer.linkContact': 'Contact',
       'footer.address': 'Lane 101 Thanh Nhan, Bach Mai, Hanoi',
+      'footer.office': 'Transaction Office: 4th Floor, Times Tower, 35 Le Van Luong Street, Thanh Xuan Ward, Hanoi City, Vietnam',
       'footer.copyright': '© 2026 Minh Son Technology Co., Ltd (MSTech). All rights reserved.'
     }
   };
