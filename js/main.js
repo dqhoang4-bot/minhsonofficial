@@ -6,8 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks  = document.querySelector('.nav-links');
   const sections = document.querySelectorAll('section[id]');
   const btt = document.getElementById('back-to-top');
-  const counters = document.querySelectorAll('.counter');
-  let counted = false;
 
   /* ---------- Active nav highlight ---------- */
   function updateActiveNav () {
@@ -26,32 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btt.classList.toggle('visible', window.scrollY > 400);
   }
 
-  /* ---------- Counter Animation ---------- */
-  function countStats () {
-    const statsEl = document.getElementById('stats');
-    if (!statsEl || counted) return;
-    const top = statsEl.getBoundingClientRect().top;
-    if (top < window.innerHeight * 0.85) {
-      counted = true;
-      counters.forEach(counter => {
-        const target = +counter.dataset.target;
-        let current = 0;
-        const increment = target / 60;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) { counter.textContent = target; clearInterval(timer); }
-          else counter.textContent = Math.floor(current);
-        }, 20);
-      });
-    }
-  }
-
   /* ---------- Header scroll effect ---------- */
   const onScroll = () => {
     if (header) header.classList.toggle('scrolled', window.scrollY > 60);
     updateActiveNav();
     toggleBackToTop();
-    countStats();
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 
@@ -122,25 +99,6 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------- Back to top ---------- */
   if (btt) {
     btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-  }
-
-  /* ---------- Contact form ---------- */
-  const form = document.getElementById('contactForm');
-  if (form) {
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      const successEl = document.getElementById('form-success');
-      const btn = form.querySelector('button[type="submit"]');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Đang gửi...';
-      setTimeout(() => {
-        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Gửi yêu cầu';
-        btn.disabled = false;
-        if (successEl) successEl.style.display = 'flex';
-        form.reset();
-        setTimeout(() => { if (successEl) successEl.style.display = 'none'; }, 5000);
-      }, 1500);
-    });
   }
 
   /* ---------- Smooth scroll for all # links ---------- */
